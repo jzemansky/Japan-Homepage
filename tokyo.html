@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+                if(!window.AnimationEvent) {
+                    return;
+                }
+
+                var anchors = document.getElementsByTagName('a');
+                for(var i = 0; i < anchors.length; i++) {
+                    if(anchors[i].hostname !== window.location.hostname || anchors[i].pathname === window.location.pathname) {
+                        continue;
+                    }
+
+                    anchors[i].addEventListener('click', function(event) {
+                        var fader = document.getElementById('fader'), anchor = event.currentTarget;
+                        var listener = function() {
+                            window.location = anchor.href;
+                            fader.removeEventListener('animationend', listener);
+                        };
+                        fader.addEventListener('animationend', listener);
+                        event.preventDefault();
+                        fader.classList.add('fade-in');
+                    });
+                }
+            });
+
+            winow.addEventListener('pageshow', function(event){
+                if(!event.persisted){
+                    return;
+                }
+                var fader = document.getElementById('fader');
+                fader.classList.remove('fade-in');
+            });
+        </script>
+        <title>Tokyo Plans</title>
+    </head>
+    <body>
+        <svg id="fader"></svg>
+        <script>
+            fadeInPage();
+            function fadeInPage() {
+                if(!window.AnimationEvent){
+                    return;
+                }
+                var fader = document.getElementById('fader');
+                fader.classList.add('fade-out');
+            };
+        </script>
+        <div class="navBar">
+            <div class="icon">
+                <a href="index.html">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg" alt="Japanese Flag" class="japanFlag">
+                </a>
+            </div>
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Cities
+                </a>
+
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="tokyo.html">Tokyo</a></li>
+                  <li><a class="dropdown-item" href="kyoto.html">Kyoto</a></li>
+                  <li><a class="dropdown-item" href="osaka.html">Osaka</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="header">
+            <h1>Tokyo Plans</h1>
+        </div>
+        <div class="links" id="links">
+            <a href="https://tokyobestburgers.com/jackson-hole/" target="_blank">
+                <div class="link">
+                    <div class="linkHeader">
+                        <h2>Jackson Hole</h2>
+                        <img src="https://lh3.googleusercontent.com/p/AF1QipP6VCgb_J4r3p2x0tZnqMhCjYg-ljKtkkHoJlF_=s680-w680-h510" alt="Jackson Hole Interior" class="linkImage">
+                    </div>
+                    <p>
+                        Jackson Hole is a famous burger joint in Tokyo that has been featured in shows such as <em>NANA</em>.
+                        We plan to visit and get the Jackson Burger!
+                    </p>
+                </div>
+            </a>
+            <a href="https://en.tokyotower.co.jp/" target="_blank">
+                <div class="link">
+                    <div class="linkHeader">
+                        <h2>Tokyo Tower</h2>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Tokyo_Tower_2023.jpg/270px-Tokyo_Tower_2023.jpg" alt="Tokyo Tower in 2023" class="linkImage">
+                    </div>
+                    <p>
+                        Tokyo Tower was built in the 50s and was the tallest building in Tokyo up until 2012.
+                        It is a radio and observation tower, and is reminiscent of the Eiffel Tower.
+                        Hopefully it'll be a sunny day when we go to the observation deck at the top!
+                    </p>
+                </div>
+            </a>
+            <a href="https://www.meijijingu.or.jp/" target="_blank">
+                <div class="link">
+                    <div class="linkHeader">
+                        <h2>Meiji Shrine</h2>
+                        <img src="https://travel.gaijinpot.com/app/uploads/sites/6/2019/05/Meiji-Jingu-2.jpg" alt="Meiji Jingu Shrine" class="linkImage">
+                    </div>
+                    <p>
+                        This shrine is famously located in the heart of Tokyo, covering 70 hectares of forest surrounded by the dense urban city.
+                        It was established in 1920, to commemorate the virtue of Emperor Meiji and Empress Shoken who took the initiative to make a foundation of modernized Japan.
+                    </p>
+                </div>
+            </a>
+            <a href="https://www.gotokyo.org/en/spot/78/index.html" target="_blank">
+                <div class="link">
+                    <div class="linkHeader">
+                        <h2>Shibuya Scramble</h2>
+                        <img src="https://www.kcpinternational.com/wp-content/uploads/2023/04/Shibuya-Crossing-1024x684.jpg" alt="Osaka Castle" class="linkImage">
+                    </div>
+                    <p>
+                        The Shibuya Scramble makes up a multitude of street crossings in the Shibuya ward of Tokyo.
+                        The Scramble occurs when police stop all traffic to allow people to cross, and since all traffic halts people walk straight across a wide expanse of roadways.
+                    </p>
+                </div>
+            </a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+                if(!window.AnimationEvent) {
+                    return;
+                }
+
+                var anchors = document.getElementsByTagName('a');
+                for(var i = 0; i < anchors.length; i++) {
+                    if(anchors[i].hostname !== window.location.hostname || anchors[i].pathname === window.location.pathname) {
+                        continue;
+                    }
+
+                    anchors[i].addEventListener('click', function(event) {
+                        var fader = document.getElementById('fader'), anchor = event.currentTarget;
+                        var listener = function() {
+                            window.location = anchor.href;
+                            fader.removeEventListener('animationend', listener);
+                        };
+                        fader.addEventListener('animationend', listener);
+                        event.preventDefault();
+                        fader.classList.add('fade-in');
+                    });
+                }
+            });
+
+            winow.addEventListener('pageshow', function(event){
+                if(!event.persisted){
+                    return;
+                }
+                var fader = document.getElementById('fader');
+                fader.classList.remove('fade-in');
+            });
+        </script>
+        <title>Kyoto Plans</title>
+    </head>
+    <body>
+        <svg id="fader"></svg>
+        <script>
+            fadeInPage();
+            function fadeInPage() {
+                if(!window.AnimationEvent){
+                    return;
+                }
+                var fader = document.getElementById('fader');
+                fader.classList.add('fade-out');
+            }
+        </script>
+        <div class="navBar">
+            <div class="icon">
+                <a href="index.html">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg" alt="Japanese Flag" class="japanFlag">
+                </a>
+            </div>
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Cities
+                </a>
+
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="tokyo.html">Tokyo</a></li>
+                  <li><a class="dropdown-item" href="kyoto.html">Kyoto</a></li>
+                  <li><a class="dropdown-item" href="osaka.html">Osaka</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="header">
+            <h1>Kyoto Plans</h1>
+        </div>
+        <div class="links">
+            <a href="https://inari.jp/" target="_blank">
+                <div class="link">
+                    <div class="linkHeader">
+                        <h2>Inari Shrine</h2>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/FushimiInariTorii.jpg" alt="Osaka Castle" class="linkImage">
+                    </div>
+                    <p>
+                        The Inari Shrine if famous for having a pathway made up of over a thousand torii gates.
+                        These torii gates represent the transition from the mundane to the sacred within Shinto, the original religion of Japan.
+                    </p>
+                </div>
+            </a>
+            <a href="https://sankan.kunaicho.go.jp/english/guide/kyoto.html" target="_blank">
+                <div class="link">
+                    <div class="linkHeader">
+                        <h2>Imperial Palace</h2>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Imperial_Palace_-_panoramio_%281%29.jpg/220px-Imperial_Palace_-_panoramio_%281%29.jpg" alt="Osaka Castle" class="linkImage">
+                    </div>
+                    <p>
+                        The Imperial Palace used to be the Capital seat of Japan. The emperor would live here and rule of all of their controlled territories.
+                    </p>
+                </div>
+            </a>
+            <a href="https://www.discoverkyoto.com/event-calendar/november/fall-dances-geiko-maiko/" target="_blank">
+                <div class="link">
+                    <div class="linkHeader">
+                        <h2>Gion Odori</h2>
+                        <img src="https://www.the-kansai-guide.com/kansaiguide/data/directory/16000/15070/20211015_062817_18987ecf_w1920.jpg" alt="Osaka Castle" class="linkImage">
+                    </div>
+                    <p>
+                        The Gion Odori Festival is held in the beginning of November, and is one of the few ways that foreigners can interact and witness the Geisha and Maiko.
+                        They perform several rituals and ceremonies within the historic district of Gion in Kyoto.
+                    </p>
+                </div>
+            </a>
+            <a href="https://www.ujikoubou.com/en/" target="_blank">
+                <div class="link">
+                    <div class="linkHeader">
+                        <h2>Fukujuen Uji</h2>
+                        <img src="https://www.ujikoubou.com/dwp/wp-content/uploads/2023/07/uji_top_06.jpg" alt="Osaka Castle" class="linkImage">
+                    </div>
+                    <p>
+                        Fukujuen Uji is a tea house located alongside the bank of the Uji river.
+                        They offer the ability to grind and prepare matcha tea through traditional stone grinding techniques.
+                    </p>
+                </div>
+            </a>
+        </div>
+    </body>
+</html>
+
